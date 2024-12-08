@@ -7,6 +7,7 @@ object HuaweiSettings : Settings {
     val touchscreenGloveMode = "key_huawei_touchscreen_glove_mode"
     val fastCharge = "key_huawei_fast_charge"
     val noHwcomposer = "key_huawei_no_hwcomposer"
+    val monosim = "key_huawei_monosim"
 
     override fun enabled(): Boolean =
             Tools.vendorFpLow.contains("huawei") ||

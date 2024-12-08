@@ -75,6 +75,12 @@ class Huawei: EntryStartup {
                 val value = sp.getBoolean(key, false)
                 enableHwcOverlay(!value)
             }
+            //    private static final String PROPERTY_MULTISIM_CONFIG = "persist.radio.multisim.config";
+            HuaweiSettings.monosim -> {
+                val value = sp.getBoolean(key, false)
+                SystemProperties.set("persist.sys.phh.monosim", if (value) "true" else "false")
+                Log.d("PHH", "Set Huawei monosim to $value")
+            }
         }
     }
 
@@ -91,6 +97,7 @@ class Huawei: EntryStartup {
         spListener.onSharedPreferenceChanged(sp, HuaweiSettings.touchscreenGloveMode)
         spListener.onSharedPreferenceChanged(sp, HuaweiSettings.fastCharge)
         spListener.onSharedPreferenceChanged(sp, HuaweiSettings.noHwcomposer)
+        spListener.onSharedPreferenceChanged(sp, HuaweiSettings.monosim)
         tsService?.hwTsGetChipInfo { _, chip_info ->
             Log.d("PHH", "HW Touchscreen chip $chip_info")
         }
