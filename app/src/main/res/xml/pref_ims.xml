@@ -12,5 +12,5 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="key_ims_force_enable_setting"
-        android:title="Force the presence of 4G Calling setting" />
+        android:title="Force volte and vowifi setting (4G/LTE)" />
 </PreferenceScreen>
