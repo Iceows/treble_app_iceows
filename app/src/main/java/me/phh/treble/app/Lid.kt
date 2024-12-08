@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.SurfaceControl
 import androidx.annotation.RequiresApi
 
+
 object Lid: EntryStartup {
     val globalRef = mutableListOf<Any>()
     fun waky(ctxt: Context) {
@@ -26,16 +27,17 @@ object Lid: EntryStartup {
         PowerManager::class.java.getMethod("goToSleep", Long::class.java).invoke(powerManager, SystemClock.uptimeMillis())
     }
 
+
     fun huawei(ctxt: Context) {
         val sensorManager = ctxt.getSystemService(SensorManager::class.java)
-        // Huawei Hall sensor for magnetic cover : ID = 65538
-        val sensors = listOf("HALL sensor")
-        val lidSensor = sensorManager.getSensorList(Sensor.TYPE_ALL).firstOrNull() { sensor -> sensors.any { name -> sensor.name.contains(name)}}
+        // Huawei Hall sensor for magnetic cover : ID = 65538 - name = "HALL sensor"
+        val lidSensor = sensorManager.getSensorList(Sensor.TYPE_ALL).find { it.id == 65538 }
         if(lidSensor == null) {
             Log.d("PHH", "Failed finding sensor for lid wakeup")
             for(s in sensorManager.getSensorList(Sensor.TYPE_ALL)) {
                 Log.d("PHH", " - '${s.name}'")
             }
+            return
         }
         Log.d("PHH", "Found lid sensor $lidSensor")
 
@@ -64,6 +66,7 @@ object Lid: EntryStartup {
             for(s in sensorManager.getSensorList(Sensor.TYPE_ALL)) {
                 Log.d("PHH", " - '${s.name}'")
             }
+            return
         }
         Log.d("PHH", "Found lid sensor $lidSensor")
 
