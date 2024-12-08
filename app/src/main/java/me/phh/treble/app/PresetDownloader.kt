@@ -93,6 +93,8 @@ class PresetDownloader {
 
                     val mutablesNodes = mutableListOf<JSONObject>()
 
+                    Log.d("PHH-Presets", "For ${vendorFp} - ${oppoPrjName}")
+
                     for (i in 0 until json.length()) {
                         val node = json.getJSONObject(i)
                         val prop = node.getString("match_property")
