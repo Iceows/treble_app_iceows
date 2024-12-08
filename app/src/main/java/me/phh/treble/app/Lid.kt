@@ -30,12 +30,14 @@ object Lid: EntryStartup {
 
     fun huawei(ctxt: Context) {
         val sensorManager = ctxt.getSystemService(SensorManager::class.java)
-        // Huawei Hall sensor for magnetic cover : ID = 65538 - name = "HALL sensor"
-        val lidSensor = sensorManager.getSensorList(Sensor.TYPE_ALL).find { it.id == 65538 }
+        // Huawei Hall sensor for magnetic cover : type = 65538 - name = "HALL sensor"
+        // find the first item or return null
+        // type=65538 is the Huawei type for magnetic sensor (found in the EMUI9 frameworks)
+        val lidSensor = sensorManager.getSensorList(Sensor.TYPE_ALL).find { it.type == 65538 }
         if(lidSensor == null) {
             Log.d("PHH", "Failed finding sensor for lid wakeup")
             for(s in sensorManager.getSensorList(Sensor.TYPE_ALL)) {
-                Log.d("PHH", " - '${s.name}'")
+                Log.d("PHH", "Sensor name : '${s.name}' - type : '${s.type}'")
             }
             return
         }
