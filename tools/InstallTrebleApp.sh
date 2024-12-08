@@ -1,4 +1,4 @@
-mv /media/iceows/Projets/iceows/treble_app/app/build/outputs/apk/release/app-release-unsigned.apk .
+mv /media/iceows/Projets/iceows/treble_app_iceows/app/build/outputs/apk/release/app-release-unsigned.apk .
 java -jar apksigner.jar sign  --key platform.pk8 --cert platform.x509.pem  --v4-signing-enabled false --out "TrebleApp.apk" "app-release-unsigned.apk"
 
 
