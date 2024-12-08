@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<array name="pref_misc_safetyspoof_model">
+		<item>Google Pixel XL</item>
+		<item>Google Pixel</item>
+	</array>
+	<array name="pref_misc_safetyspoof_model_values">
+		<item>marlin</item>
+		<item>sailfish</item>
+	</array>
+
+</resources>

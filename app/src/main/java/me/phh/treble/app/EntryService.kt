@@ -45,6 +45,7 @@ class EntryService: Service() {
             tryC { OverlayPicker.startup(this) }
             tryC { Doze.startup(this) }
             tryC { Huawei.startup(this) }
+            tryC { SafetyNet.startup(this) }
             tryC { Misc.startup(this) }
             tryC { Samsung.startup(this) }
             tryC { Transsion.startup(this) }

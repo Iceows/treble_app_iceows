@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory android:title="SafetyNet">
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="key_misc_securize"
+		android:title="Securize (SafetyNet)"
+		android:summary="Remove su and can help to pass SafetyNet\n(not for all devices)" />
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="key_misc_safetyspoof"
+		android:title="Spoof model (SafetyNet)"
+		android:summary="Spoof model to pass SafetyNet\nYour phone will appear as model in your Google Account" />
+	<ListPreference
+		android:defaultValue="marlin"
+		android:entries="@array/pref_misc_safetyspoof_model"
+		android:entryValues="@array/pref_misc_safetyspoof_model_values"
+		android:key="key_misc_safetyspoof_model"
+		android:title="Spoof to this model" />
+	</PreferenceCategory>
+</PreferenceScreen>
+

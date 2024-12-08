@@ -18,6 +18,9 @@
         android:fragment="me.phh.treble.app.HuaweiSettingsFragment"
         android:title="Huawei features" />
     <header
+        android:fragment="me.phh.treble.app.SafetyNetSettingsFragment"
+        android:title="Safetynet features" />
+    <header
         android:fragment="me.phh.treble.app.SamsungSettingsFragment"
         android:title="Samsung features" />
     <header

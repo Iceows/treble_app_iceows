@@ -55,6 +55,8 @@ class SettingsActivity : PreferenceActivity() {
             target.removeIf { it.fragment == OnePlusSettingsFragment::class.java.name }
         if (!HuaweiSettings.enabled())
             target.removeIf { it.fragment == HuaweiSettingsFragment::class.java.name }
+        if (!SafetyNetSettings.enabled())
+            target.removeIf { it.fragment == SafetyNetSettingsFragment::class.java.name }
         if (!SamsungSettings.enabled())
             target.removeIf { it.fragment == SamsungSettingsFragment::class.java.name }
         if (!TranssionSettings.enabled())
@@ -92,6 +94,7 @@ class SettingsActivity : PreferenceActivity() {
                 || OnePlusSettingsFragment::class.java.name == fragmentName
                 || DozeSettingsFragment::class.java.name == fragmentName
                 || HuaweiSettingsFragment::class.java.name == fragmentName
+                || SafetyNetSettingsFragment::class.java.name == fragmentName
                 || MiscSettingsFragment::class.java.name == fragmentName
                 || SamsungSettingsFragment::class.java.name == fragmentName
                 || TranssionSettingsFragment::class.java.name == fragmentName
