@@ -12,5 +12,9 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="key_ims_force_enable_setting"
-        android:title="Force volte and vowifi setting (4G/LTE)" />
+        android:title="Force volte (4G/LTE) and vowifi setting" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="key_ims_enable"
+        android:title="Enable the volte" />
 </PreferenceScreen>

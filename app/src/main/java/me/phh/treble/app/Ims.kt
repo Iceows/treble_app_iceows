@@ -47,18 +47,25 @@ object Ims: EntryStartup {
                     }
                 }
             }
+            ImsSettings.enableVolte -> {
+                val value = if(sp.getBoolean(key, false)) "1" else "0"
+                Misc.safeSetprop("persist.dbg.ims_volte_enable",value)
+
+                // Pixel volte
+                // Misc.safeSetprop("persist.radio.calls.on.ims",value)
+
+                // Huawei IMS - enable
+                Misc.safeSetprop("ro.hw.volte.enable",value)
+            }
+
             ImsSettings.forceEnableSettings -> {
                 val value = if(sp.getBoolean(key, false)) "1" else "0"
                 // Display voLTE/4G calling options in settings
                 Misc.safeSetprop("persist.dbg.volte_avail_ovr", value)
                 // Display voWifi calling options in settings
                 Misc.safeSetprop("persist.dbg.wfc_avail_ovr", value)
-
-                // Use IMS for VOLTE
-                Misc.safeSetprop("persist.dbg.ims_volte_enable",value)
+                // ??
                 Misc.safeSetprop("persist.dbg.allow_ims_off", value)
-                Misc.safeSetprop("persist.radio.calls.on.ims",value)
-
                 // Display Video calling options in the settings
                 //Misc.safeSetprop("persist.dbg.vt_avail_ovr", value)
             }
