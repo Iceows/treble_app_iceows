@@ -136,8 +136,8 @@ class ImsSettingsFragment : SettingsFragment() {
                     Ims.gotQcomAidl -> Pair("https://treble.phh.me/stable/ims-caf-s$signSuffix.apk", "Qualcomm S+ vendor")
 
                     Ims.gotHW8 -> Pair("https://treble.phh.me/stable/ims-hw-8.apk", "Huawei EMUI8 vendor")
-                    Ims.gotHW9 -> Pair("https://treble.phh.me/stable/ims-hw-9.apk", "Huawei EMUI9 vendor")
-                    Ims.gotHW10 -> Pair("https://treble.phh.me/stable/ims-hw-10.apk", "Huawei EMUI10 vendor")
+                    Ims.gotHW9 -> Pair("https://treble.phh.me/stable/ims-hw-9.apk", "Huawei EMUI9 vendor (not supported)")
+                    Ims.gotHW10 -> Pair("https://treble.phh.me/stable/ims-hw-10.apk", "Huawei EMUI10 vendor (not supported)")
                     else -> Pair("", "NOT SUPPORTED")
                 }
 
