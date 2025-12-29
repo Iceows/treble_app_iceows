@@ -26,11 +26,37 @@ class SafetyNet: EntryStartup {
     val spListener = SharedPreferences.OnSharedPreferenceChangeListener { sp, key ->
         when(key) {
 
-            SafetyNetSettings.securize -> {
+            SafetyNetSettings.removesu -> {
+                Log.d("PHH", "Remove SU")
+                var cmds = listOf(
+                    arrayOf("/sbin/su", "-c", "/system/bin/phh-securize.sh"),
+                    arrayOf("/system/xbin/su", "-c", "/system/bin/phh-securize.sh"),
+                    arrayOf("/system/xbin/phh-su", "-c", "/system/bin/phh-securize.sh"),
+                    arrayOf("/sbin/su", "0", "/system/bin/phh-securize.sh"),
+                    arrayOf("/system/xbin/su", "0", "/system/bin/phh-securize.sh"),
+                    arrayOf("/system/xbin/phh-su", "0", "/system/bin/phh-securize.sh")
+                )
+                for (cmd in cmds) {
+                    try {
+                        Runtime.getRuntime().exec(cmd).waitFor()
+                        break
+                    } catch (t: Throwable) {
+                        Log.d(
+                            "PHH",
+                            "Failed to exec \"" + cmd.joinToString(separator = " ") + "\", skipping"
+                        )
+                    }
+                }
+            }
+            SafetyNetSettings.secureAdb -> {
+                val value = sp.getBoolean(key, false)
+                SystemProperties.set("persist.sys.phh.adb_secure", if (value) "1" else "0")
+                Log.d("PHH", "Set Secure adb to $value")
+            }
+            SafetyNetSettings.securePhone -> {
                 val value = sp.getBoolean(key, false)
                 SystemProperties.set("persist.sys.phh.securize", if (value) "true" else "false")
                 Log.d("PHH", "Set Securize to $value")
-
             }
             SafetyNetSettings.safetyNetSpoof -> {
                 val value = sp.getBoolean(key, false)
@@ -39,7 +65,7 @@ class SafetyNet: EntryStartup {
             }
             SafetyNetSettings.safetyNetSpoofModel-> {
                 val value = sp.getString(key, "1")
-                android.util.Log.d("PHH", "Setting spoof model to $value")
+                Log.d("PHH", "Setting spoof model to $value")
 
                 when (value) {
                     //Google Pixel XL (7.1 & 7.1.1 & 7.1.2 & 8.0.0 & 8.1.0 & 9 & 10):
@@ -110,7 +136,6 @@ class SafetyNet: EntryStartup {
 
 
     override fun startup(ctxt: Context) {
-        //if (!SafetyNetSettings.enabled()) return
 
         val sp = PreferenceManager.getDefaultSharedPreferences(ctxt)
         sp.registerOnSharedPreferenceChangeListener(spListener)
@@ -119,7 +144,7 @@ class SafetyNet: EntryStartup {
 
         spListener.onSharedPreferenceChanged(sp, SafetyNetSettings.safetyNetSpoof)
         spListener.onSharedPreferenceChanged(sp, SafetyNetSettings.safetyNetSpoofModel)
-        spListener.onSharedPreferenceChanged(sp, SafetyNetSettings.securize)
+
     }
 
 

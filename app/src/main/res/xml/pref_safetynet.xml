@@ -2,12 +2,13 @@
 <PreferenceScreen
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<PreferenceCategory android:title="SafetyNet">
-	<SwitchPreference
-		android:defaultValue="false"
-		android:key="key_misc_securize"
-		android:title="Securize (SafetyNet)"
-		android:summary="Remove su and can help to pass SafetyNet\n(not for all devices)" />
+	<PreferenceCategory android:title="Securize/SafetyNet">
+	<Preference android:title="Securize Phone"
+			android:key="key_misc_securize" />
+	<Preference android:title="Securize adb"
+			android:key="key_misc_secure_adb" />
+	<Preference android:title="Remove su (SafetyNet)"
+			android:key="key_misc_removesu" />
 	<SwitchPreference
 		android:defaultValue="false"
 		android:key="key_misc_safetyspoof"
