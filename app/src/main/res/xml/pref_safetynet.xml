@@ -3,12 +3,14 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<PreferenceCategory android:title="Securize/SafetyNet">
-	<Preference android:title="Securize Phone"
+	<SwitchPreference
+		android:defaultValue="false"
+		android:key="key_misc_secure_adb"
+		android:title="Secure ADB" />
+	<Preference android:title="Securize Phone (Remove SU)"
+		android:key="key_misc_securize_phh" />
+	<Preference android:title="Securize Phone (SafetyNet)"
 			android:key="key_misc_securize" />
-	<Preference android:title="Securize adb"
-			android:key="key_misc_secure_adb" />
-	<Preference android:title="Remove su (SafetyNet)"
-			android:key="key_misc_removesu" />
 	<SwitchPreference
 		android:defaultValue="false"
 		android:key="key_misc_safetyspoof"
